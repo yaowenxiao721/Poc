@@ -16,33 +16,37 @@
 ```
 1. Use administrator login
 2. Click "add content to the page" in the top navigation.
-3. Select the Legacy Form block , drag and drop it to the page.
+3. Select the FAQ block , drag and drop it to the page.
 4. Add <script>alert('...');</script> to the Navigation Link Text field、Title Text、Description(source) and then click save,the xss vulnerability appears.
 
 Potentially problematic source code:
 ```php
 public function save($args)
     {
+        $db = $this->app->make('database')->connection();
+        $db->executeQuery('DELETE FROM btFaqEntries WHERE bID = ?', [$this->bID]);
         parent::save($args);
+        $count = isset($args['sortOrder']) ? count($args['sortOrder']) : 0;
 
-        /** @var Connection $db */
-        $db = $this->app->make(Connection::class);
-        $db->executeStatement('DELETE FROM btAccordionEntries WHERE bID = ?', [$this->bID]);
-        $entries = $this->processJson($args);
-
-        if ($entries) {
-            $sortOrder = 0;
-            foreach ($entries as $entry) {
-                // Add the entry row
-                if (isset($entry['description'])) {
-                    $entry['description'] = LinkAbstractor::translateTo($entry['description']);
-                }
-                $db->executeStatement(
-                    'INSERT INTO btAccordionEntries (bID, sortOrder, title, description) VALUES (?, ?, ?, ?)',
-                    [(int)$this->bID, $sortOrder++, $entry['title'], $entry['description']]
-                );
+        $i = 0;
+        while ($i < $count) {
+            if (isset($args['description'][$i])) {
+                $args['description'][$i] = LinkAbstractor::translateTo($args['description'][$i]);
             }
+
+            $db->executeQuery(
+                'INSERT INTO btFaqEntries (bID, title, linkTitle, description, sortOrder) VALUES(?,?,?,?,?)',
+                [
+                    $this->bID,
+                    $args['title'][$i],
+                    $args['linkTitle'][$i],
+                    $args['description'][$i],
+                    $args['sortOrder'][$i],
+                ]
+            );
+            ++$i;
         }
+    }
 ```
 
 Patch:
