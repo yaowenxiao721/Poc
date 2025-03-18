@@ -14,7 +14,7 @@
 <script>alert('Body Source');</script>
 ```
 
-1. Use administrator login
+1. Log in as a user with page editing privileges.
 2. Click "add content to the page" in the top navigation.
 3. Select the Accordion , drag and drop it to the page.
 4. Add <script>alert('...');</script> to the Title field、Body source field and then click save,the xss vulnerability appears.

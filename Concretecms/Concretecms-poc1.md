@@ -12,7 +12,7 @@
 ```
 <script>alert('XSS');</script>
 ```
-1. Use administrator login
+1. Log in as a user with page editing privileges.
 2. Click "add content to the page" in the top navigation.
 3. Select the Legacy Form block , drag and drop it to the page.
 4. Add <script>alert('Question');</script> to the question field and then click add question bottons,the xss vulnerability appears.

