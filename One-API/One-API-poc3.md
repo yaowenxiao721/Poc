@@ -5,12 +5,12 @@
 ## Vendor: one-api
 ## Version: latest
 ## Exploit Description:
-## One-api latest suffers from a Stored Cross-Site Scripting (XSS) vulnerability in the system settings (other settings)，when add "<img src = 1 onerror = alert(/xss/)>" in Homepage Content field. This vulnerability allows attackers to cheat other users by injecting malicious scripts into web pages viewed by other users.
+## One-api latest suffers from a Stored Cross-Site Scripting (XSS) vulnerability in the system settings (other settings)，when add "<img src = 1 onerror = alert(/xss/)>" in Footer field. This vulnerability allows attackers to cheat other users by injecting malicious scripts into web pages viewed by other users.
 
-## ---------------------------------POC--------------------------------
+## ---------------------------------POC-----------------------------
 
 ```
-<img src = 1 onerror = alert(/homepage/)>
+<img src = 1 onerror = alert(/footer/)>
 
 ```
 
@@ -21,4 +21,4 @@
 ![poc](./poc.png)
 
 ## effect
-![effect](./effect-homepage.png)
+![effect](./effect-footer.png)
