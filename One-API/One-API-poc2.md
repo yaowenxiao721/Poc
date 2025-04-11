@@ -18,7 +18,7 @@
 2. Add <script>alert('...');</script> to the Homepage Content、Footer、About System field,the xss vulnerability appears.
 
 ## POC
-![poc](./poc.png)
+![poc](./poc-about.png)
 
 ## effect
 ![effect](./effect-about.png)
