@@ -19,7 +19,7 @@
 3. Select the Document Library block , drag and drop it to the page.
 4. Add <script>alert('...');</script> to the Table Name field、Table Description field and then click ADD,the xss vulnerability appears.
 
-![](./concretecms-poc11.png)
+![](./payload-poc11.png)
 
 #### Effect
 
