@@ -10,9 +10,8 @@ Broken Access Control in SQLBot User Management API Endpoints
 * **Fixed Version:** N/A (unfixed at time of disclosure)
 
 ## 3. Vulnerability Type (CWE)
-* **CWE ID:** CWE-639
-* **Type Name:** Authorization Bypass Through User-Controlled Key (BOLA/IDOR)
-* **OWASP API Security:** API1:2023 Broken Object Level Authorization
+* **CWE ID:** CWE-285
+* **Type Name:** Broken Function Level Authorization（BFLA）
 
 ## 4. Description
 SQLBot version 1.3.0 and earlier contains a broken access control vulnerability in multiple user management API endpoints at `backend/apps/system/api/user.py`. Any authenticated user (regardless of role) can perform privileged operations including creating, modifying, deleting arbitrary users, and viewing sensitive user information.
