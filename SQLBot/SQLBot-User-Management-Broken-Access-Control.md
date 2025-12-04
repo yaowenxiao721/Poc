@@ -120,5 +120,5 @@ async def delete(session: SessionDep, current_user: CurrentUser, trans: Trans, i
 
 ## 9. References
 * **Vendor Repository:** https://github.com/dataease/SQLBot
-* **CWE-639:** https://cwe.mitre.org/data/definitions/639.html
-* **OWASP API1:2023 BOLA:** https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/
+* **CWE-285:** https://cwe.mitre.org/data/definitions/285.html
+* **OWASP API1:2023 BFLA:** https://owasp.org/API-Security/editions/2023/en/0xa1-broken-function-level-authorization/
