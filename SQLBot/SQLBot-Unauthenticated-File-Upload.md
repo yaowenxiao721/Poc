@@ -1,4 +1,4 @@
-# Vulnerability Report / CVE Request
+# Unauthenticated Arbitrary File Upload in SQLBot uploadExcel Endpoint
 
 ## 1. Vulnerability Title
 Unauthenticated Arbitrary File Upload in SQLBot uploadExcel Endpoint

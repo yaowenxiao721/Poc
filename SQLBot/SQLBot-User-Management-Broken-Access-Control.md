@@ -1,4 +1,4 @@
-# Vulnerability Report / CVE Request
+# Broken Access Control in SQLBot User Management API Endpoints
 
 ## 1. Vulnerability Title
 Broken Access Control in SQLBot User Management API Endpoints
