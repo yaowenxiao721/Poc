@@ -4,7 +4,7 @@
 JWT Signature Verification Bypass in Embedded Authentication of SQLBot
 
 ## 2. Product Details
-* **Vendor:** SQLBot Team
+* **Vendor:** DataEase / FIT2CLOUD
 * **Product:** SQLBot
 * **Affected Version(s):** <= v1.3.0
 * **Fixed Version:** N/A
