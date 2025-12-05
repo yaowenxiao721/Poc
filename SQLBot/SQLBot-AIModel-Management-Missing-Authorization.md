@@ -139,7 +139,7 @@ x-sqlbot-token: <valid_user_token>
 
 **File:** `backend/apps/system/api/aimodel.py`
 
-### Vulnerability #24: GET /system/aimodel (Lines 72-88)
+### Vulnerability #1: GET /system/aimodel (Lines 72-88)
 
 ```python
 @router.get("", response_model=list[AiModelGridItem])
@@ -154,7 +154,7 @@ async def query(
                        # ... returns all models without permission check
 ```
 
-### Vulnerability #25: GET /system/aimodel/{id} (Lines 90-113) - CRITICAL API KEY LEAKAGE
+### Vulnerability #2: GET /system/aimodel/{id} (Lines 90-113) - CRITICAL API KEY LEAKAGE
 
 ```python
 @router.get("/{id}", response_model=AiModelEditor)
@@ -173,7 +173,7 @@ async def get_model_by_id(
     # ... returns sensitive data without permission check
 ```
 
-### Vulnerability #26: POST /system/aimodel (Lines 115-129)
+### Vulnerability #3: POST /system/aimodel (Lines 115-129)
 
 ```python
 @router.post("")
@@ -187,7 +187,7 @@ async def add_model(
     # ... creates model without permission check
 ```
 
-### Vulnerability #27: PUT /system/aimodel (Lines 131-144)
+### Vulnerability #4: PUT /system/aimodel (Lines 131-144)
 
 ```python
 @router.put("")
@@ -201,7 +201,7 @@ async def update_model(
     # ... modifies model without permission check
 ```
 
-### Vulnerability #28: DELETE /system/aimodel/{id} (Lines 146-156)
+### Vulnerability #5: DELETE /system/aimodel/{id} (Lines 146-156)
 
 ```python
 @router.delete("/{id}")
@@ -216,7 +216,7 @@ async def delete_model(
     # ... deletes model without permission check
 ```
 
-### Vulnerability #29: PUT /system/aimodel/default/{id} (Lines 53-70)
+### Vulnerability #6: PUT /system/aimodel/default/{id} (Lines 53-70)
 
 ```python
 @router.put("/default/{id}")
@@ -227,7 +227,7 @@ async def set_default(session: SessionDep, id: int):
     # ... sets default model without permission check
 ```
 
-### Vulnerability #30: POST /system/aimodel/status (Lines 18-43)
+### Vulnerability #7: POST /system/aimodel/status (Lines 18-43)
 
 ```python
 @router.post("/status")
@@ -283,7 +283,7 @@ async def get_model_by_id(
 
 ## 10. Special Note on API Key Leakage
 
-Vulnerability #25 is particularly critical because it exposes **decrypted API keys** to any authenticated user. These API keys may include:
+Vulnerability #2 is particularly critical because it exposes **decrypted API keys** to any authenticated user. These API keys may include:
 - OpenAI API keys
 - Azure OpenAI keys
 - Other LLM provider credentials
